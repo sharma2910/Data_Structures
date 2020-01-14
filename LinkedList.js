@@ -42,9 +42,26 @@ class LinkedList{
                 this.head = cuur.nexxt;
             }
             else{
+                curr = this.head;
+                var it = 0;
 
+                while(it<index){
+                    it++;
+                    prev = curr;
+                    curr = curr.next;
+                }
+                prev.next = curr.next;
             }
+            this.size--;
         }
+    }
+
+    printList(node){
+        while(node.next.next != null){
+            console.log(`${node.data} => `)
+            node = node.next;
+        }
+        console.log(`${node.data} => ||`)
     }
 }
 
@@ -55,4 +72,7 @@ ll.add(3);
 ll.add(4);
 ll.add(5);
 ll.add(6);
-console.log(ll.head.next)
+console.log(ll.size)
+ll.remove(3);
+console.log(ll.size)
+ll.printList(ll.head)

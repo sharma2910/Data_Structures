@@ -1,3 +1,5 @@
+// Simple Implementation of Queue 
+
 class Queue{
     constructor(){
         this.queue = [];
