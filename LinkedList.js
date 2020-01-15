@@ -29,7 +29,38 @@ class LinkedList{
         this.size++;
     }
 
-    remove(index){
+    insertAt(element,index){
+        if(index > 0 && index > this.size){
+            return false;
+        }
+        else{
+            let newNode = new Node(element);
+            let curr,prev;
+
+            curr = this.head;
+
+            if(index == 0){
+                newNode.next = this.head;
+                this.head = newNode;
+            }
+            else{
+                curr = this.head;
+                var it = 0;
+
+                while(it < index){
+                    prev = curr;
+                    curr = curr.next;
+                    it++;
+                }
+
+                newNode.next = curr;
+                prev.next = newNode;
+            }
+            this.size++;
+        }
+    }
+
+    removeFrom(index){
         if(index > 0 && index > this.size){
             return -1
         }
@@ -58,10 +89,14 @@ class LinkedList{
 
     printList(node){
         while(node.next.next != null){
-            console.log(`${node.data} => `)
-            node = node.next;
+            console.log(node.data);
+            node = node.next
         }
-        console.log(`${node.data} => ||`)
+        console.log(`${node.data} => null`)
+    }
+
+    sizeOfList(){
+        return this.size;
     }
 }
 
@@ -72,7 +107,5 @@ ll.add(3);
 ll.add(4);
 ll.add(5);
 ll.add(6);
-console.log(ll.size)
-ll.remove(3);
-console.log(ll.size)
+ll.insertAt(100,2);
 ll.printList(ll.head)
